@@ -52,7 +52,7 @@ namespace ECSDemo {
         public virtual System.Collections.IEnumerator Execute() {
             ActionNode1_message = StringNode2;
             // ActionNode
-            while (this.DebugInfo("97ef28ae-6679-4de0-91c9-e4c02c0d6647","63191a25-d053-45ad-98e7-0b27872544a9", this) == 1) yield return null;
+            while (this.DebugInfo("","63191a25-d053-45ad-98e7-0b27872544a9", this) == 1) yield return null;
             // Visit uFrame.Actions.DebugLibrary.LogMessage
             uFrame.Actions.DebugLibrary.LogMessage(ActionNode1_message);
             // PublishEventNode

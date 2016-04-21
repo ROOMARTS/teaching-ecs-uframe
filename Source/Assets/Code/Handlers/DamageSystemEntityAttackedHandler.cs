@@ -89,7 +89,7 @@ namespace ECSDemo {
             ActionNode21_min = Attacker.AttackComponent.MinDamage;
             ActionNode21_max = Attacker.AttackComponent.MaxDamage;
             // ActionNode
-            while (this.DebugInfo("1de75035-cb19-47f1-800a-142423e8c74f","7f2b22cb-d285-49e0-ad0b-e376f57e5f1a", this) == 1) yield return null;
+            while (this.DebugInfo("54dfe765-5ab4-4a05-80d9-20413da2ca51","7f2b22cb-d285-49e0-ad0b-e376f57e5f1a", this) == 1) yield return null;
             // Visit uFrame.Actions.CreateRandoms.RandomInt
             ActionNode21_Result = uFrame.Actions.CreateRandoms.RandomInt(ActionNode21_min, ActionNode21_max);
             ActionNode23_a = ActionNode21_Result;

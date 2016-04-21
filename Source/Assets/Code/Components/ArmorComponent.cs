@@ -30,7 +30,7 @@ namespace ECSDemo {
         
         public int ComponentID {
             get {
-                return 28;
+                return 5;
             }
         }
         

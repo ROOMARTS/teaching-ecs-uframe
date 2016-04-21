@@ -1,0 +1,8 @@
+{
+	"Identifier":"acf9bc98-849e-4d13-9ab6-b50c16dee0c3"	, 
+	"Time":"4/21/2016 6:21:40 PM"	, 
+	"Group":182140	, 
+	"DataRecordId":"344a0f59-9d27-400d-a57a-6aa1123f03c3"	, 
+	"Type":2	, 
+	"RecordType":"Invert.uFrame.ECS.ActionNode, Invert.uFrame.ECS.Editor, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"	, 
+	"Data":"{\r\n\t\"MetaType\":\"uFrame.Actions.IntLibrary.Add\"\t, \r\n\t\"VariableName\":\"ActionNode61\"\t, \r\n\t\"Order\":0\t, \r\n\t\"GraphId\":\"8359e1c4-8e93-4f7a-8c61-cb67628a531a\"\t, \r\n\t\"Identifier\":\"344a0f59-9d27-400d-a57a-6aa1123f03c3\"\t, \r\n\t\"Expanded\":false}\r\n"}

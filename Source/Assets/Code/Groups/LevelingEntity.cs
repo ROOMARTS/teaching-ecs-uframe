@@ -20,7 +20,29 @@ namespace ECSDemo {
     
     public partial class LevelingEntity : uFrame.ECS.GroupItem {
         
+        private HealthComponent _HealthComponent;
+        
+        private AttackComponent _AttackComponent;
+        
         private LevelComponent _LevelComponent;
+        
+        public HealthComponent HealthComponent {
+            get {
+                return _HealthComponent;
+            }
+            set {
+                _HealthComponent = value;
+            }
+        }
+        
+        public AttackComponent AttackComponent {
+            get {
+                return _AttackComponent;
+            }
+            set {
+                _AttackComponent = value;
+            }
+        }
         
         public LevelComponent LevelComponent {
             get {
@@ -33,7 +55,7 @@ namespace ECSDemo {
         
         public int ComponentID {
             get {
-                return 32;
+                return 7;
             }
         }
     }

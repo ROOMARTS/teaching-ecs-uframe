@@ -20,11 +20,37 @@ namespace ECSDemo {
     
     public partial class LevelingEntityGroup : ReactiveGroup<LevelingEntity> {
         
+        private IEcsComponentManagerOf<HealthComponent> _HealthComponentManager;
+        
+        private IEcsComponentManagerOf<AttackComponent> _AttackComponentManager;
+        
         private IEcsComponentManagerOf<LevelComponent> _LevelComponentManager;
         
         private int lastEntityId;
         
+        private HealthComponent HealthComponent;
+        
+        private AttackComponent AttackComponent;
+        
         private LevelComponent LevelComponent;
+        
+        public IEcsComponentManagerOf<HealthComponent> HealthComponentManager {
+            get {
+                return _HealthComponentManager;
+            }
+            set {
+                _HealthComponentManager = value;
+            }
+        }
+        
+        public IEcsComponentManagerOf<AttackComponent> AttackComponentManager {
+            get {
+                return _AttackComponentManager;
+            }
+            set {
+                _AttackComponentManager = value;
+            }
+        }
         
         public IEcsComponentManagerOf<LevelComponent> LevelComponentManager {
             get {
@@ -36,6 +62,12 @@ namespace ECSDemo {
         }
         
         public override System.Collections.Generic.IEnumerable<UniRx.IObservable<int>> Install(uFrame.ECS.IComponentSystem componentSystem) {
+            HealthComponentManager = componentSystem.RegisterComponent<HealthComponent>();
+            yield return HealthComponentManager.CreatedObservable.Select(_=>_.EntityId);;
+            yield return HealthComponentManager.RemovedObservable.Select(_=>_.EntityId);;
+            AttackComponentManager = componentSystem.RegisterComponent<AttackComponent>();
+            yield return AttackComponentManager.CreatedObservable.Select(_=>_.EntityId);;
+            yield return AttackComponentManager.RemovedObservable.Select(_=>_.EntityId);;
             LevelComponentManager = componentSystem.RegisterComponent<LevelComponent>();
             yield return LevelComponentManager.CreatedObservable.Select(_=>_.EntityId);;
             yield return LevelComponentManager.RemovedObservable.Select(_=>_.EntityId);;
@@ -43,6 +75,12 @@ namespace ECSDemo {
         
         public override bool Match(int entityId) {
             lastEntityId = entityId;
+            if ((HealthComponent = HealthComponentManager[entityId]) == null) {
+                return false;
+            }
+            if ((AttackComponent = AttackComponentManager[entityId]) == null) {
+                return false;
+            }
             if ((LevelComponent = LevelComponentManager[entityId]) == null) {
                 return false;
             }
@@ -52,6 +90,8 @@ namespace ECSDemo {
         public override LevelingEntity Select() {
             var item = new LevelingEntity();;
             item.EntityId = lastEntityId;
+            item.HealthComponent = HealthComponent;
+            item.AttackComponent = AttackComponent;
             item.LevelComponent = LevelComponent;
             return item;
         }

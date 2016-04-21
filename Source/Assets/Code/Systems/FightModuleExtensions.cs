@@ -30,6 +30,13 @@ static
         
         #region 
 static
+        public uFrame.ECS.IEcsComponentManagerOf<LevelComponent> LevelComponentManager(this uFrame.ECS.IEcsSystem system) {
+            return system.ComponentSystem.RegisterComponent<LevelComponent>();
+        }
+        #endregion
+        
+        #region 
+static
         public uFrame.ECS.IEcsComponentManagerOf<AttackComponent> AttackComponentManager(this uFrame.ECS.IEcsSystem system) {
             return system.ComponentSystem.RegisterComponent<AttackComponent>();
         }
@@ -51,22 +58,8 @@ static
         
         #region 
 static
-        public uFrame.ECS.IEcsComponentManagerOf<LevelComponent> LevelComponentManager(this uFrame.ECS.IEcsSystem system) {
-            return system.ComponentSystem.RegisterComponent<LevelComponent>();
-        }
-        #endregion
-        
-        #region 
-static
         public uFrame.ECS.IEcsComponentManagerOf<DefendingEntity> DefendingEntityManager(this uFrame.ECS.IEcsSystem system) {
             return system.ComponentSystem.RegisterComponent<DefendingEntity>();
-        }
-        #endregion
-        
-        #region 
-static
-        public uFrame.ECS.IEcsComponentManagerOf<AttackingEntity> AttackingEntityManager(this uFrame.ECS.IEcsSystem system) {
-            return system.ComponentSystem.RegisterComponent<AttackingEntity>();
         }
         #endregion
         
@@ -79,8 +72,22 @@ static
         
         #region 
 static
+        public uFrame.ECS.IEcsComponentManagerOf<AttackingEntity> AttackingEntityManager(this uFrame.ECS.IEcsSystem system) {
+            return system.ComponentSystem.RegisterComponent<AttackingEntity>();
+        }
+        #endregion
+        
+        #region 
+static
         public List<HealthComponent> HealthComponentComponents(this uFrame.ECS.IEcsSystem system) {
             return system.ComponentSystem.RegisterComponent<HealthComponent>().Components;
+        }
+        #endregion
+        
+        #region 
+static
+        public List<LevelComponent> LevelComponentComponents(this uFrame.ECS.IEcsSystem system) {
+            return system.ComponentSystem.RegisterComponent<LevelComponent>().Components;
         }
         #endregion
         
@@ -107,13 +114,6 @@ static
         
         #region 
 static
-        public List<LevelComponent> LevelComponentComponents(this uFrame.ECS.IEcsSystem system) {
-            return system.ComponentSystem.RegisterComponent<LevelComponent>().Components;
-        }
-        #endregion
-        
-        #region 
-static
         public List<DefendingEntity> DefendingEntityComponents(this uFrame.ECS.IEcsSystem system) {
             return system.ComponentSystem.RegisterComponent<DefendingEntity>().Components;
         }
@@ -121,15 +121,15 @@ static
         
         #region 
 static
-        public List<AttackingEntity> AttackingEntityComponents(this uFrame.ECS.IEcsSystem system) {
-            return system.ComponentSystem.RegisterComponent<AttackingEntity>().Components;
+        public List<LevelingEntity> LevelingEntityComponents(this uFrame.ECS.IEcsSystem system) {
+            return system.ComponentSystem.RegisterComponent<LevelingEntity>().Components;
         }
         #endregion
         
         #region 
 static
-        public List<LevelingEntity> LevelingEntityComponents(this uFrame.ECS.IEcsSystem system) {
-            return system.ComponentSystem.RegisterComponent<LevelingEntity>().Components;
+        public List<AttackingEntity> AttackingEntityComponents(this uFrame.ECS.IEcsSystem system) {
+            return system.ComponentSystem.RegisterComponent<AttackingEntity>().Components;
         }
         #endregion
     }

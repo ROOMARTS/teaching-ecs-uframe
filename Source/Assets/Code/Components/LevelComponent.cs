@@ -25,26 +25,26 @@ namespace ECSDemo {
         private Int32 _Level;
         
         [UnityEngine.SerializeField()]
-        private Int32 _CurrentXp;
+        private Int32 _MaxXp;
         
         [UnityEngine.SerializeField()]
-        private Int32 _MaxXp;
+        private Int32 _CurrentXp;
         
         private Subject<PropertyChangedEvent<Int32>> _LevelObservable;
         
         private PropertyChangedEvent<Int32> _LevelEvent;
         
-        private Subject<PropertyChangedEvent<Int32>> _CurrentXpObservable;
-        
-        private PropertyChangedEvent<Int32> _CurrentXpEvent;
-        
         private Subject<PropertyChangedEvent<Int32>> _MaxXpObservable;
         
         private PropertyChangedEvent<Int32> _MaxXpEvent;
         
+        private Subject<PropertyChangedEvent<Int32>> _CurrentXpObservable;
+        
+        private PropertyChangedEvent<Int32> _CurrentXpEvent;
+        
         public int ComponentID {
             get {
-                return 29;
+                return 2;
             }
         }
         
@@ -54,15 +54,15 @@ namespace ECSDemo {
             }
         }
         
-        public IObservable<PropertyChangedEvent<Int32>> CurrentXpObservable {
-            get {
-                return _CurrentXpObservable ?? (_CurrentXpObservable = new Subject<PropertyChangedEvent<Int32>>());
-            }
-        }
-        
         public IObservable<PropertyChangedEvent<Int32>> MaxXpObservable {
             get {
                 return _MaxXpObservable ?? (_MaxXpObservable = new Subject<PropertyChangedEvent<Int32>>());
+            }
+        }
+        
+        public IObservable<PropertyChangedEvent<Int32>> CurrentXpObservable {
+            get {
+                return _CurrentXpObservable ?? (_CurrentXpObservable = new Subject<PropertyChangedEvent<Int32>>());
             }
         }
         
@@ -75,15 +75,6 @@ namespace ECSDemo {
             }
         }
         
-        public Int32 CurrentXp {
-            get {
-                return _CurrentXp;
-            }
-            set {
-                SetCurrentXp(value);
-            }
-        }
-        
         public Int32 MaxXp {
             get {
                 return _MaxXp;
@@ -93,16 +84,25 @@ namespace ECSDemo {
             }
         }
         
+        public Int32 CurrentXp {
+            get {
+                return _CurrentXp;
+            }
+            set {
+                SetCurrentXp(value);
+            }
+        }
+        
         public virtual void SetLevel(Int32 value) {
             SetProperty(ref _Level, value, ref _LevelEvent, _LevelObservable);
         }
         
-        public virtual void SetCurrentXp(Int32 value) {
-            SetProperty(ref _CurrentXp, value, ref _CurrentXpEvent, _CurrentXpObservable);
-        }
-        
         public virtual void SetMaxXp(Int32 value) {
             SetProperty(ref _MaxXp, value, ref _MaxXpEvent, _MaxXpObservable);
+        }
+        
+        public virtual void SetCurrentXp(Int32 value) {
+            SetProperty(ref _CurrentXp, value, ref _CurrentXpEvent, _CurrentXpObservable);
         }
     }
 }
