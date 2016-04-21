@@ -28,6 +28,8 @@ namespace ECSDemo {
         
         private IEcsComponentManagerOf<TargetComponent> _TargetComponentManager;
         
+        private IEcsComponentManagerOf<ArmorComponent> _ArmorComponentManager;
+        
         private IEcsComponentManagerOf<AttackingEntity> _AttackingEntityManager;
         
         private IEcsComponentManagerOf<DefendingEntity> _DefendingEntityManager;
@@ -61,6 +63,15 @@ namespace ECSDemo {
             }
         }
         
+        public IEcsComponentManagerOf<ArmorComponent> ArmorComponentManager {
+            get {
+                return _ArmorComponentManager;
+            }
+            set {
+                _ArmorComponentManager = value;
+            }
+        }
+        
         public IEcsComponentManagerOf<AttackingEntity> AttackingEntityManager {
             get {
                 return _AttackingEntityManager;
@@ -86,6 +97,7 @@ namespace ECSDemo {
             HealthComponentManager = ComponentSystem.RegisterComponent<HealthComponent>();
             AttackComponentManager = ComponentSystem.RegisterComponent<AttackComponent>();
             TargetComponentManager = ComponentSystem.RegisterComponent<TargetComponent>();
+            ArmorComponentManager = ComponentSystem.RegisterComponent<ArmorComponent>();
             this.OnEvent<ECSDemo.HealthChanged>().Subscribe(_=>{ DefeatSystemHealthChangedFilter(_); }).DisposeWith(this);
         }
         

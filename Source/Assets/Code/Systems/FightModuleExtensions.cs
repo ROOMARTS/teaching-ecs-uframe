@@ -44,6 +44,13 @@ static
         
         #region 
 static
+        public uFrame.ECS.IEcsComponentManagerOf<ArmorComponent> ArmorComponentManager(this uFrame.ECS.IEcsSystem system) {
+            return system.ComponentSystem.RegisterComponent<ArmorComponent>();
+        }
+        #endregion
+        
+        #region 
+static
         public uFrame.ECS.IEcsComponentManagerOf<DefendingEntity> DefendingEntityManager(this uFrame.ECS.IEcsSystem system) {
             return system.ComponentSystem.RegisterComponent<DefendingEntity>();
         }
@@ -74,6 +81,13 @@ static
 static
         public List<TargetComponent> TargetComponentComponents(this uFrame.ECS.IEcsSystem system) {
             return system.ComponentSystem.RegisterComponent<TargetComponent>().Components;
+        }
+        #endregion
+        
+        #region 
+static
+        public List<ArmorComponent> ArmorComponentComponents(this uFrame.ECS.IEcsSystem system) {
+            return system.ComponentSystem.RegisterComponent<ArmorComponent>().Components;
         }
         #endregion
         

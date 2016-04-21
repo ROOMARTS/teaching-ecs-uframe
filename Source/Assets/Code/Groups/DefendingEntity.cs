@@ -20,7 +20,18 @@ namespace ECSDemo {
     
     public partial class DefendingEntity : uFrame.ECS.GroupItem {
         
+        private ArmorComponent _ArmorComponent;
+        
         private HealthComponent _HealthComponent;
+        
+        public ArmorComponent ArmorComponent {
+            get {
+                return _ArmorComponent;
+            }
+            set {
+                _ArmorComponent = value;
+            }
+        }
         
         public HealthComponent HealthComponent {
             get {
@@ -33,7 +44,7 @@ namespace ECSDemo {
         
         public int ComponentID {
             get {
-                return 4;
+                return 5;
             }
         }
     }

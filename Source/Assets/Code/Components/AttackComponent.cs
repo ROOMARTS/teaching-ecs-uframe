@@ -22,28 +22,22 @@ namespace ECSDemo {
     public partial class AttackComponent : uFrame.ECS.EcsComponent {
         
         [UnityEngine.SerializeField()]
-        private Int32 _MinDamage;
-        
-        [UnityEngine.SerializeField()]
         private Int32 _MaxDamage;
         
-        private Subject<PropertyChangedEvent<Int32>> _MinDamageObservable;
-        
-        private PropertyChangedEvent<Int32> _MinDamageEvent;
+        [UnityEngine.SerializeField()]
+        private Int32 _MinDamage;
         
         private Subject<PropertyChangedEvent<Int32>> _MaxDamageObservable;
         
         private PropertyChangedEvent<Int32> _MaxDamageEvent;
         
+        private Subject<PropertyChangedEvent<Int32>> _MinDamageObservable;
+        
+        private PropertyChangedEvent<Int32> _MinDamageEvent;
+        
         public int ComponentID {
             get {
                 return 2;
-            }
-        }
-        
-        public IObservable<PropertyChangedEvent<Int32>> MinDamageObservable {
-            get {
-                return _MinDamageObservable ?? (_MinDamageObservable = new Subject<PropertyChangedEvent<Int32>>());
             }
         }
         
@@ -53,12 +47,9 @@ namespace ECSDemo {
             }
         }
         
-        public Int32 MinDamage {
+        public IObservable<PropertyChangedEvent<Int32>> MinDamageObservable {
             get {
-                return _MinDamage;
-            }
-            set {
-                SetMinDamage(value);
+                return _MinDamageObservable ?? (_MinDamageObservable = new Subject<PropertyChangedEvent<Int32>>());
             }
         }
         
@@ -71,12 +62,21 @@ namespace ECSDemo {
             }
         }
         
-        public virtual void SetMinDamage(Int32 value) {
-            SetProperty(ref _MinDamage, value, ref _MinDamageEvent, _MinDamageObservable);
+        public Int32 MinDamage {
+            get {
+                return _MinDamage;
+            }
+            set {
+                SetMinDamage(value);
+            }
         }
         
         public virtual void SetMaxDamage(Int32 value) {
             SetProperty(ref _MaxDamage, value, ref _MaxDamageEvent, _MaxDamageObservable);
+        }
+        
+        public virtual void SetMinDamage(Int32 value) {
+            SetProperty(ref _MinDamage, value, ref _MinDamageEvent, _MinDamageObservable);
         }
     }
 }

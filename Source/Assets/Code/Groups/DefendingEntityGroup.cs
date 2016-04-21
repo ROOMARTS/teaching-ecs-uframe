@@ -20,11 +20,24 @@ namespace ECSDemo {
     
     public partial class DefendingEntityGroup : ReactiveGroup<DefendingEntity> {
         
+        private IEcsComponentManagerOf<ArmorComponent> _ArmorComponentManager;
+        
         private IEcsComponentManagerOf<HealthComponent> _HealthComponentManager;
         
         private int lastEntityId;
         
+        private ArmorComponent ArmorComponent;
+        
         private HealthComponent HealthComponent;
+        
+        public IEcsComponentManagerOf<ArmorComponent> ArmorComponentManager {
+            get {
+                return _ArmorComponentManager;
+            }
+            set {
+                _ArmorComponentManager = value;
+            }
+        }
         
         public IEcsComponentManagerOf<HealthComponent> HealthComponentManager {
             get {
@@ -36,6 +49,9 @@ namespace ECSDemo {
         }
         
         public override System.Collections.Generic.IEnumerable<UniRx.IObservable<int>> Install(uFrame.ECS.IComponentSystem componentSystem) {
+            ArmorComponentManager = componentSystem.RegisterComponent<ArmorComponent>();
+            yield return ArmorComponentManager.CreatedObservable.Select(_=>_.EntityId);;
+            yield return ArmorComponentManager.RemovedObservable.Select(_=>_.EntityId);;
             HealthComponentManager = componentSystem.RegisterComponent<HealthComponent>();
             yield return HealthComponentManager.CreatedObservable.Select(_=>_.EntityId);;
             yield return HealthComponentManager.RemovedObservable.Select(_=>_.EntityId);;
@@ -43,6 +59,9 @@ namespace ECSDemo {
         
         public override bool Match(int entityId) {
             lastEntityId = entityId;
+            if ((ArmorComponent = ArmorComponentManager[entityId]) == null) {
+                return false;
+            }
             if ((HealthComponent = HealthComponentManager[entityId]) == null) {
                 return false;
             }
@@ -52,6 +71,7 @@ namespace ECSDemo {
         public override DefendingEntity Select() {
             var item = new DefendingEntity();;
             item.EntityId = lastEntityId;
+            item.ArmorComponent = ArmorComponent;
             item.HealthComponent = HealthComponent;
             return item;
         }
