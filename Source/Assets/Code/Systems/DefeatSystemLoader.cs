@@ -17,13 +17,11 @@ namespace ECSDemo {
     using uFrame.Kernel;
     
     
-    public partial class ECSDemoLoader : uFrame.Kernel.SystemLoader {
+    [uFrame.Attributes.uFrameIdentifier("c17980ca-4eb2-4b5e-ab83-4303c90acad1")]
+    public partial class DefeatSystemLoader : uFrame.Kernel.SystemLoader {
         
         public override void Load() {
-            EcsSystem system = null;
-            system = this.AddSystem<DamageSystem>();
-            system = this.AddSystem<FightSystem>();
-            system = this.AddSystem<DefeatSystem>();
+            this.AddSystem<DefeatSystem>();
         }
     }
 }

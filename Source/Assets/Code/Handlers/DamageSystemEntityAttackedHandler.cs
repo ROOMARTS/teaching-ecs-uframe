@@ -61,7 +61,7 @@ namespace ECSDemo {
             ActionNode6_a = Defender.HealthComponent.Health;
             ActionNode6_b = Attacker.AttackComponent.Damage;
             // ActionNode
-            while (this.DebugInfo("b247b012-b03e-4f3b-aca3-553347375e23","a010da49-1016-4be7-af66-635fb9568f51", this) == 1) yield return null;
+            while (this.DebugInfo("c3a09036-50e1-4ac7-a9d4-a7834ee5ec37","a010da49-1016-4be7-af66-635fb9568f51", this) == 1) yield return null;
             // Visit uFrame.Actions.IntLibrary.Subtract
             ActionNode6_Result = uFrame.Actions.IntLibrary.Subtract(ActionNode6_a, ActionNode6_b);
             // SetVariableNode
