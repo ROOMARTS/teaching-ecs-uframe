@@ -21,6 +21,7 @@ namespace ECSDemo {
         
         public override void Load() {
             EcsSystem system = null;
+            system = this.AddSystem<DamageSystem>();
             system = this.AddSystem<FightSystem>();
         }
     }

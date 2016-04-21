@@ -31,6 +31,8 @@ GameObject:
   - 114: {fileID: 11447226}
   - 114: {fileID: 11402838}
   - 114: {fileID: 11450338}
+  - 114: {fileID: 11401950}
+  - 114: {fileID: 11434372}
   m_Layer: 5
   m_Name: Fighter Button
   m_TagString: Untagged
@@ -65,6 +67,19 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &11401950
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 164100}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93193e84c7049a64ba33a6a20d16888d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _Entity: {fileID: 11447226}
+  _Damage: 0
 --- !u!114 &11402838
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -119,6 +134,19 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &11434372
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 164100}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64c0d71ee1158d643ac4fc4184dd2e2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _Entity: {fileID: 11447226}
+  _Health: 0
 --- !u!114 &11447226
 MonoBehaviour:
   m_ObjectHideFlags: 1

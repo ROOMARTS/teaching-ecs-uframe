@@ -22,11 +22,35 @@ namespace ECSDemo {
     [uFrame.Attributes.uFrameIdentifier("6f4b5006-a62c-4b72-9801-486e3796dab7")]
     public partial class FightSystem : uFrame.ECS.EcsSystem {
         
+        private IEcsComponentManagerOf<HealthComponent> _HealthComponentManager;
+        
+        private IEcsComponentManagerOf<AttackComponent> _AttackComponentManager;
+        
         private IEcsComponentManagerOf<TargetComponent> _TargetComponentManager;
         
         private IEcsComponentManagerOf<AttackingEntity> _AttackingEntityManager;
         
+        private IEcsComponentManagerOf<DefendingEntity> _DefendingEntityManager;
+        
         private FightSystemPointerClickHandler FightSystemPointerClickHandlerInstance = new FightSystemPointerClickHandler();
+        
+        public IEcsComponentManagerOf<HealthComponent> HealthComponentManager {
+            get {
+                return _HealthComponentManager;
+            }
+            set {
+                _HealthComponentManager = value;
+            }
+        }
+        
+        public IEcsComponentManagerOf<AttackComponent> AttackComponentManager {
+            get {
+                return _AttackComponentManager;
+            }
+            set {
+                _AttackComponentManager = value;
+            }
+        }
         
         public IEcsComponentManagerOf<TargetComponent> TargetComponentManager {
             get {
@@ -46,9 +70,21 @@ namespace ECSDemo {
             }
         }
         
+        public IEcsComponentManagerOf<DefendingEntity> DefendingEntityManager {
+            get {
+                return _DefendingEntityManager;
+            }
+            set {
+                _DefendingEntityManager = value;
+            }
+        }
+        
         public override void Setup() {
             base.Setup();
             AttackingEntityManager = ComponentSystem.RegisterGroup<AttackingEntityGroup,AttackingEntity>();
+            DefendingEntityManager = ComponentSystem.RegisterGroup<DefendingEntityGroup,DefendingEntity>();
+            HealthComponentManager = ComponentSystem.RegisterComponent<HealthComponent>();
+            AttackComponentManager = ComponentSystem.RegisterComponent<AttackComponent>();
             TargetComponentManager = ComponentSystem.RegisterComponent<TargetComponent>();
             this.OnEvent<uFrame.ECS.PointerClickDispatcher>().Subscribe(_=>{ FightSystemPointerClickFilter(_); }).DisposeWith(this);
         }

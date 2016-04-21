@@ -22,9 +22,13 @@ namespace ECSDemo {
         
         private IEcsComponentManagerOf<TargetComponent> _TargetComponentManager;
         
+        private IEcsComponentManagerOf<AttackComponent> _AttackComponentManager;
+        
         private int lastEntityId;
         
         private TargetComponent TargetComponent;
+        
+        private AttackComponent AttackComponent;
         
         public IEcsComponentManagerOf<TargetComponent> TargetComponentManager {
             get {
@@ -35,15 +39,30 @@ namespace ECSDemo {
             }
         }
         
+        public IEcsComponentManagerOf<AttackComponent> AttackComponentManager {
+            get {
+                return _AttackComponentManager;
+            }
+            set {
+                _AttackComponentManager = value;
+            }
+        }
+        
         public override System.Collections.Generic.IEnumerable<UniRx.IObservable<int>> Install(uFrame.ECS.IComponentSystem componentSystem) {
             TargetComponentManager = componentSystem.RegisterComponent<TargetComponent>();
             yield return TargetComponentManager.CreatedObservable.Select(_=>_.EntityId);;
             yield return TargetComponentManager.RemovedObservable.Select(_=>_.EntityId);;
+            AttackComponentManager = componentSystem.RegisterComponent<AttackComponent>();
+            yield return AttackComponentManager.CreatedObservable.Select(_=>_.EntityId);;
+            yield return AttackComponentManager.RemovedObservable.Select(_=>_.EntityId);;
         }
         
         public override bool Match(int entityId) {
             lastEntityId = entityId;
             if ((TargetComponent = TargetComponentManager[entityId]) == null) {
+                return false;
+            }
+            if ((AttackComponent = AttackComponentManager[entityId]) == null) {
                 return false;
             }
             return true;
@@ -53,6 +72,7 @@ namespace ECSDemo {
             var item = new AttackingEntity();;
             item.EntityId = lastEntityId;
             item.TargetComponent = TargetComponent;
+            item.AttackComponent = AttackComponent;
             return item;
         }
     }

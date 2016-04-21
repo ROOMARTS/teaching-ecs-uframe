@@ -22,6 +22,8 @@ namespace ECSDemo {
         
         private TargetComponent _TargetComponent;
         
+        private AttackComponent _AttackComponent;
+        
         public TargetComponent TargetComponent {
             get {
                 return _TargetComponent;
@@ -31,9 +33,18 @@ namespace ECSDemo {
             }
         }
         
+        public AttackComponent AttackComponent {
+            get {
+                return _AttackComponent;
+            }
+            set {
+                _AttackComponent = value;
+            }
+        }
+        
         public int ComponentID {
             get {
-                return 2;
+                return 5;
             }
         }
     }

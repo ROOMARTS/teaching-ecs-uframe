@@ -29,6 +29,8 @@ namespace ECSDemo {
         
         private string StringNode2 = "AttackSystem - Entity attacked.";
         
+        private ECSDemo.EntityAttacked PublishEventNode3_Result = default( ECSDemo.EntityAttacked );
+        
         public uFrame.ECS.PointerClickDispatcher Event {
             get {
                 return _Event;
@@ -53,6 +55,13 @@ namespace ECSDemo {
             while (this.DebugInfo("","63191a25-d053-45ad-98e7-0b27872544a9", this) == 1) yield return null;
             // Visit uFrame.Actions.DebugLibrary.LogMessage
             uFrame.Actions.DebugLibrary.LogMessage(ActionNode1_message);
+            // PublishEventNode
+            while (this.DebugInfo("63191a25-d053-45ad-98e7-0b27872544a9","b247b012-b03e-4f3b-aca3-553347375e23", this) == 1) yield return null;
+            var PublishEventNode3_Event = new EntityAttacked();
+            PublishEventNode3_Event.Attacker = Source.Entity.EntityId;
+            PublishEventNode3_Event.Defender = Source.TargetComponent.Target;
+            System.Publish(PublishEventNode3_Event);
+            PublishEventNode3_Event = PublishEventNode3_Result;
             yield break;
         }
     }
