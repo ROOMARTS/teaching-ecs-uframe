@@ -89,7 +89,7 @@ namespace ECSDemo {
             ActionNode21_min = Attacker.AttackComponent.MinDamage;
             ActionNode21_max = Attacker.AttackComponent.MaxDamage;
             // ActionNode
-            while (this.DebugInfo("c3a09036-50e1-4ac7-a9d4-a7834ee5ec37","7f2b22cb-d285-49e0-ad0b-e376f57e5f1a", this) == 1) yield return null;
+            while (this.DebugInfo("1de75035-cb19-47f1-800a-142423e8c74f","7f2b22cb-d285-49e0-ad0b-e376f57e5f1a", this) == 1) yield return null;
             // Visit uFrame.Actions.CreateRandoms.RandomInt
             ActionNode21_Result = uFrame.Actions.CreateRandoms.RandomInt(ActionNode21_min, ActionNode21_max);
             ActionNode23_a = ActionNode21_Result;
@@ -135,6 +135,7 @@ namespace ECSDemo {
             // PublishEventNode
             while (this.DebugInfo("ac96668a-7e2c-476d-afa5-b264faa1e1cf","bd50d6fa-13a8-4a2a-bfa2-e0edc11d9af1", this) == 1) yield return null;
             var PublishEventNode9_Event = new HealthChanged();
+            PublishEventNode9_Event.Instigator = Event.Attacker;
             PublishEventNode9_Event.Health = Defender.HealthComponent.Health;
             PublishEventNode9_Event.Entity = Event.Defender;
             System.Publish(PublishEventNode9_Event);

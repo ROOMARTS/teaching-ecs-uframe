@@ -21,10 +21,22 @@ namespace ECSDemo {
     public partial class HealthChanged : object {
         
         [UnityEngine.SerializeField()]
+        private Int32 _Instigator;
+        
+        [UnityEngine.SerializeField()]
         private Int32 _Health;
         
         [UnityEngine.SerializeField()]
         private Int32 _Entity;
+        
+        public Int32 Instigator {
+            get {
+                return _Instigator;
+            }
+            set {
+                _Instigator = value;
+            }
+        }
         
         public Int32 Health {
             get {

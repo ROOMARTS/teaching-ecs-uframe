@@ -51,6 +51,13 @@ static
         
         #region 
 static
+        public uFrame.ECS.IEcsComponentManagerOf<LevelComponent> LevelComponentManager(this uFrame.ECS.IEcsSystem system) {
+            return system.ComponentSystem.RegisterComponent<LevelComponent>();
+        }
+        #endregion
+        
+        #region 
+static
         public uFrame.ECS.IEcsComponentManagerOf<DefendingEntity> DefendingEntityManager(this uFrame.ECS.IEcsSystem system) {
             return system.ComponentSystem.RegisterComponent<DefendingEntity>();
         }
@@ -60,6 +67,13 @@ static
 static
         public uFrame.ECS.IEcsComponentManagerOf<AttackingEntity> AttackingEntityManager(this uFrame.ECS.IEcsSystem system) {
             return system.ComponentSystem.RegisterComponent<AttackingEntity>();
+        }
+        #endregion
+        
+        #region 
+static
+        public uFrame.ECS.IEcsComponentManagerOf<LevelingEntity> LevelingEntityManager(this uFrame.ECS.IEcsSystem system) {
+            return system.ComponentSystem.RegisterComponent<LevelingEntity>();
         }
         #endregion
         
@@ -93,6 +107,13 @@ static
         
         #region 
 static
+        public List<LevelComponent> LevelComponentComponents(this uFrame.ECS.IEcsSystem system) {
+            return system.ComponentSystem.RegisterComponent<LevelComponent>().Components;
+        }
+        #endregion
+        
+        #region 
+static
         public List<DefendingEntity> DefendingEntityComponents(this uFrame.ECS.IEcsSystem system) {
             return system.ComponentSystem.RegisterComponent<DefendingEntity>().Components;
         }
@@ -102,6 +123,13 @@ static
 static
         public List<AttackingEntity> AttackingEntityComponents(this uFrame.ECS.IEcsSystem system) {
             return system.ComponentSystem.RegisterComponent<AttackingEntity>().Components;
+        }
+        #endregion
+        
+        #region 
+static
+        public List<LevelingEntity> LevelingEntityComponents(this uFrame.ECS.IEcsSystem system) {
+            return system.ComponentSystem.RegisterComponent<LevelingEntity>().Components;
         }
         #endregion
     }

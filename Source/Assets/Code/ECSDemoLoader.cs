@@ -24,6 +24,7 @@ namespace ECSDemo {
             system = this.AddSystem<DamageSystem>();
             system = this.AddSystem<FightSystem>();
             system = this.AddSystem<DefeatSystem>();
+            system = this.AddSystem<ExperienceSystem>();
         }
     }
 }

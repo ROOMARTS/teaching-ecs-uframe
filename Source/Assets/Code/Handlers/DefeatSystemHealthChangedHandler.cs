@@ -49,6 +49,8 @@ namespace ECSDemo {
         
         private string StringNode17 = "DefeatSystem - Entity destroyed.";
         
+        private ECSDemo.EntityDefeated PublishEventNode30_Result = default( ECSDemo.EntityDefeated );
+        
         public ECSDemo.HealthChanged Event {
             get {
                 return _Event;
@@ -98,6 +100,13 @@ namespace ECSDemo {
             while (this.DebugInfo("144a6a06-3702-4b89-bb35-04de982263ba","c3a09036-50e1-4ac7-a9d4-a7834ee5ec37", this) == 1) yield return null;
             // Visit uFrame.Actions.DebugLibrary.LogMessage
             uFrame.Actions.DebugLibrary.LogMessage(ActionNode16_message);
+            // PublishEventNode
+            while (this.DebugInfo("c3a09036-50e1-4ac7-a9d4-a7834ee5ec37","1de75035-cb19-47f1-800a-142423e8c74f", this) == 1) yield return null;
+            var PublishEventNode30_Event = new EntityDefeated();
+            PublishEventNode30_Event.Attacker = Event.Instigator;
+            PublishEventNode30_Event.Defender = Event.Entity;
+            System.Publish(PublishEventNode30_Event);
+            PublishEventNode30_Event = PublishEventNode30_Result;
             yield break;
         }
         

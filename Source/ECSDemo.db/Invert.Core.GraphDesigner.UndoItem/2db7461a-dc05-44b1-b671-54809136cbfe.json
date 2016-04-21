@@ -1,0 +1,8 @@
+{
+	"Identifier":"2db7461a-dc05-44b1-b671-54809136cbfe"	, 
+	"Time":"4/21/2016 6:12:22 PM"	, 
+	"Group":181221	, 
+	"DataRecordId":"3cacaf98-ccd6-438a-b915-2ada3840acf5"	, 
+	"Type":0	, 
+	"RecordType":"Invert.uFrame.ECS.PropertySelectionValue, Invert.uFrame.ECS.Editor, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"	, 
+	"Data":"{\r\n\t\"Identifier\":\"3cacaf98-ccd6-438a-b915-2ada3840acf5\"\t, \r\n\t\"NodeId\":\"7d8f65ab-1787-4d75-bf5c-827da75c0491\"\t, \r\n\t\"ItemId\":\"7d8f65ab-1787-4d75-bf5c-827da75c0491:Property\"\t, \r\n\t\"ValueId\":\"67315d49-390f-410a-ba7d-40623210bd86:Event.Attacker\"}\r\n"}

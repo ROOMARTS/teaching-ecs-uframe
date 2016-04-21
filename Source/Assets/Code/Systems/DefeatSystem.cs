@@ -30,9 +30,13 @@ namespace ECSDemo {
         
         private IEcsComponentManagerOf<ArmorComponent> _ArmorComponentManager;
         
+        private IEcsComponentManagerOf<LevelComponent> _LevelComponentManager;
+        
         private IEcsComponentManagerOf<AttackingEntity> _AttackingEntityManager;
         
         private IEcsComponentManagerOf<DefendingEntity> _DefendingEntityManager;
+        
+        private IEcsComponentManagerOf<LevelingEntity> _LevelingEntityManager;
         
         private DefeatSystemHealthChangedHandler DefeatSystemHealthChangedHandlerInstance = new DefeatSystemHealthChangedHandler();
         
@@ -72,6 +76,15 @@ namespace ECSDemo {
             }
         }
         
+        public IEcsComponentManagerOf<LevelComponent> LevelComponentManager {
+            get {
+                return _LevelComponentManager;
+            }
+            set {
+                _LevelComponentManager = value;
+            }
+        }
+        
         public IEcsComponentManagerOf<AttackingEntity> AttackingEntityManager {
             get {
                 return _AttackingEntityManager;
@@ -90,14 +103,25 @@ namespace ECSDemo {
             }
         }
         
+        public IEcsComponentManagerOf<LevelingEntity> LevelingEntityManager {
+            get {
+                return _LevelingEntityManager;
+            }
+            set {
+                _LevelingEntityManager = value;
+            }
+        }
+        
         public override void Setup() {
             base.Setup();
             AttackingEntityManager = ComponentSystem.RegisterGroup<AttackingEntityGroup,AttackingEntity>();
             DefendingEntityManager = ComponentSystem.RegisterGroup<DefendingEntityGroup,DefendingEntity>();
+            LevelingEntityManager = ComponentSystem.RegisterGroup<LevelingEntityGroup,LevelingEntity>();
             HealthComponentManager = ComponentSystem.RegisterComponent<HealthComponent>();
             AttackComponentManager = ComponentSystem.RegisterComponent<AttackComponent>();
             TargetComponentManager = ComponentSystem.RegisterComponent<TargetComponent>();
             ArmorComponentManager = ComponentSystem.RegisterComponent<ArmorComponent>();
+            LevelComponentManager = ComponentSystem.RegisterComponent<LevelComponent>();
             this.OnEvent<ECSDemo.HealthChanged>().Subscribe(_=>{ DefeatSystemHealthChangedFilter(_); }).DisposeWith(this);
         }
         
