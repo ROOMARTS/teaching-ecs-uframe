@@ -1,0 +1,8 @@
+{
+	"Identifier":"a3ecc342-afdb-4551-b02d-6bd19eb29667"	, 
+	"Time":"4/21/2016 5:45:47 PM"	, 
+	"Group":174547	, 
+	"DataRecordId":"7ffe0e51-c830-4dc8-adad-853f198b6eba"	, 
+	"Type":2	, 
+	"RecordType":"Invert.uFrame.ECS.PropertyNode, Invert.uFrame.ECS.Editor, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"	, 
+	"Data":"{\r\n\t\"Order\":0\t, \r\n\t\"GraphId\":\"8359e1c4-8e93-4f7a-8c61-cb67628a531a\"\t, \r\n\t\"Identifier\":\"7ffe0e51-c830-4dc8-adad-853f198b6eba\"\t, \r\n\t\"Expanded\":false}\r\n"}

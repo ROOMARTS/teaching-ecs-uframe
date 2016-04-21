@@ -22,11 +22,18 @@ namespace ECSDemo {
     public partial class AttackComponent : uFrame.ECS.EcsComponent {
         
         [UnityEngine.SerializeField()]
-        private Int32 _Damage;
+        private Int32 _MinDamage;
         
-        private Subject<PropertyChangedEvent<Int32>> _DamageObservable;
+        [UnityEngine.SerializeField()]
+        private Int32 _MaxDamage;
         
-        private PropertyChangedEvent<Int32> _DamageEvent;
+        private Subject<PropertyChangedEvent<Int32>> _MinDamageObservable;
+        
+        private PropertyChangedEvent<Int32> _MinDamageEvent;
+        
+        private Subject<PropertyChangedEvent<Int32>> _MaxDamageObservable;
+        
+        private PropertyChangedEvent<Int32> _MaxDamageEvent;
         
         public int ComponentID {
             get {
@@ -34,23 +41,42 @@ namespace ECSDemo {
             }
         }
         
-        public IObservable<PropertyChangedEvent<Int32>> DamageObservable {
+        public IObservable<PropertyChangedEvent<Int32>> MinDamageObservable {
             get {
-                return _DamageObservable ?? (_DamageObservable = new Subject<PropertyChangedEvent<Int32>>());
+                return _MinDamageObservable ?? (_MinDamageObservable = new Subject<PropertyChangedEvent<Int32>>());
             }
         }
         
-        public Int32 Damage {
+        public IObservable<PropertyChangedEvent<Int32>> MaxDamageObservable {
             get {
-                return _Damage;
+                return _MaxDamageObservable ?? (_MaxDamageObservable = new Subject<PropertyChangedEvent<Int32>>());
+            }
+        }
+        
+        public Int32 MinDamage {
+            get {
+                return _MinDamage;
             }
             set {
-                SetDamage(value);
+                SetMinDamage(value);
             }
         }
         
-        public virtual void SetDamage(Int32 value) {
-            SetProperty(ref _Damage, value, ref _DamageEvent, _DamageObservable);
+        public Int32 MaxDamage {
+            get {
+                return _MaxDamage;
+            }
+            set {
+                SetMaxDamage(value);
+            }
+        }
+        
+        public virtual void SetMinDamage(Int32 value) {
+            SetProperty(ref _MinDamage, value, ref _MinDamageEvent, _MinDamageObservable);
+        }
+        
+        public virtual void SetMaxDamage(Int32 value) {
+            SetProperty(ref _MaxDamage, value, ref _MaxDamageEvent, _MaxDamageObservable);
         }
     }
 }

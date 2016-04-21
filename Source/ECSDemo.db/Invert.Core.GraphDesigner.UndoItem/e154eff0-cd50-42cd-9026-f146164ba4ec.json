@@ -1,8 +1,0 @@
-{
-	"Identifier":"e154eff0-cd50-42cd-9026-f146164ba4ec"	, 
-	"Time":"4/21/2016 5:42:21 PM"	, 
-	"Group":174221	, 
-	"DataRecordId":"cd245d6d-4edb-40dd-bb37-ba67ce5b5d1b"	, 
-	"Type":0	, 
-	"RecordType":"Invert.uFrame.ECS.HandlerInValue, Invert.uFrame.ECS.Editor, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"	, 
-	"Data":"{\r\n\t\"Identifier\":\"cd245d6d-4edb-40dd-bb37-ba67ce5b5d1b\"\t, \r\n\t\"NodeId\":\"4fc89a70-a369-4728-8cd6-3c377a526d1b\"\t, \r\n\t\"ItemId\":\"4fc89a70-a369-4728-8cd6-3c377a526d1b:Entity\"\t, \r\n\t\"ValueId\":\"d15c0c2b-76a8-443f-b4ab-d9f53a7c719f\"}\r\n"}

@@ -29,6 +29,12 @@ namespace ECSDemo {
         
         private int ActionNode6_a = default( System.Int32 );
         
+        private int ActionNode21_min = default( System.Int32 );
+        
+        private int ActionNode21_max = default( System.Int32 );
+        
+        private int ActionNode21_Result = default( System.Int32 );
+        
         private int ActionNode6_b = default( System.Int32 );
         
         private int ActionNode6_Result = default( System.Int32 );
@@ -59,9 +65,15 @@ namespace ECSDemo {
         
         public virtual System.Collections.IEnumerator Execute() {
             ActionNode6_a = Defender.HealthComponent.Health;
-            ActionNode6_b = Attacker.AttackComponent.Damage;
+            ActionNode21_min = Attacker.AttackComponent.MinDamage;
+            ActionNode21_max = Attacker.AttackComponent.MaxDamage;
             // ActionNode
-            while (this.DebugInfo("c3a09036-50e1-4ac7-a9d4-a7834ee5ec37","a010da49-1016-4be7-af66-635fb9568f51", this) == 1) yield return null;
+            while (this.DebugInfo("c3a09036-50e1-4ac7-a9d4-a7834ee5ec37","7f2b22cb-d285-49e0-ad0b-e376f57e5f1a", this) == 1) yield return null;
+            // Visit uFrame.Actions.CreateRandoms.RandomInt
+            ActionNode21_Result = uFrame.Actions.CreateRandoms.RandomInt(ActionNode21_min, ActionNode21_max);
+            ActionNode6_b = ActionNode21_Result;
+            // ActionNode
+            while (this.DebugInfo("7f2b22cb-d285-49e0-ad0b-e376f57e5f1a","a010da49-1016-4be7-af66-635fb9568f51", this) == 1) yield return null;
             // Visit uFrame.Actions.IntLibrary.Subtract
             ActionNode6_Result = uFrame.Actions.IntLibrary.Subtract(ActionNode6_a, ActionNode6_b);
             // SetVariableNode
